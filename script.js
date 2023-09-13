@@ -71,10 +71,10 @@ function initPage() {
           fivedayForecast.classList.remove("d-none");
   
           // Display forecast data for next 5 days
-          const forecastEls = document.querySelectorAll(".forecast");
+          const forecast = document.querySelectorAll(".forecast");
   
-          for (let i = 0; i < forecastEls.length; i++) {
-            forecastEls[i].innerHTML = "";
+          for (let i = 0; i < forecast.length; i++) {
+            forecast[i].innerHTML = "";
   
             const forecastIndex = i * 8 + 4;
   
@@ -83,23 +83,23 @@ function initPage() {
             const forecastDay = forecastDate.getDate();
             const forecastMonth = forecastDate.getMonth() + 1;
             const forecastYear = forecastDate.getFullYear();
-            const forecastDateEl = document.createElement("p");
-            forecastDateEl.setAttribute("class", "mt-3 mb-0 forecast-date");
-            forecastDateEl.innerHTML = `${forecastMonth}/${forecastDay}/${forecastYear}`;
-            forecastEls[i].appendChild(forecastDateEl);
+            const forecastDates = document.createElement("p");
+            forecastDates.setAttribute("class", "mt-3 mb-0 forecast-date");
+            forecastDates.innerHTML = `${forecastMonth}/${forecastDay}/${forecastYear}`;
+            forecast[i].appendChild(forecastDates);
             // Gets weather Icon
-            const forecastWeatherEl = document.createElement("img");
-            forecastWeatherEl.setAttribute("src", `https://openweathermap.org/img/wn/${response.data.list[forecastIndex].weather[0].icon}.png`);
-            forecastWeatherEl.setAttribute("alt", response.data.list[forecastIndex].weather[0].description);
-            forecastEls[i].appendChild(forecastWeatherEl);
+            const forecastWeather = document.createElement("img");
+            forecastWeather.setAttribute("src", `https://openweathermap.org/img/wn/${response.data.list[forecastIndex].weather[0].icon}.png`);
+            forecastWeather.setAttribute("alt", response.data.list[forecastIndex].weather[0].description);
+            forecast[i].appendChild(forecastWeather);
             // Fetches Temperature
-            const forecastTempEl = document.createElement("p");
-            forecastTempEl.innerHTML = `Temp: ${k2f(response.data.list[forecastIndex].main.temp)} &#176F`;
-            forecastEls[i].appendChild(forecastTempEl);
+            const forecastTemp = document.createElement("p");
+            forecastTemp.innerHTML = `Temp: ${k2f(response.data.list[forecastIndex].main.temp)} &#176F`;
+            forecast[i].appendChild(forecastTemp);
             // Fetches Humidity
-            const forecastHumidityEl = document.createElement("p");
-            forecastHumidityEl.innerHTML = `Humidity: ${response.data.list[forecastIndex].main.humidity}%`;
-            forecastEls[i].appendChild(forecastHumidityEl);
+            const forecastHumidity = document.createElement("p");
+            forecastHumidity.innerHTML = `Humidity: ${response.data.list[forecastIndex].main.humidity}%`;
+            forecast[i].appendChild(forecastHumidity);
           }
         })
         .catch(function (error) {
@@ -107,9 +107,10 @@ function initPage() {
         });
     }
   
+
+
     searchButton.addEventListener("click", function () {
       const searchTerm = enterCity.value.trim();
-  
       if (searchTerm !== "") {
         getWeather(searchTerm);
         searchHistory.push(searchTerm);
@@ -127,7 +128,7 @@ function initPage() {
     function k2f(K) {
       return Math.floor((K - 273.15) * 1.8 + 32);
     }
-  
+
     function renderSearchHistory() {
       history.innerHTML = "";
       for (let i = 0; i < searchHistory.length; i++) {
@@ -142,12 +143,11 @@ function initPage() {
         history.appendChild(historyItem);
       }
     }
-  
     renderSearchHistory();
-  
     if (searchHistory.length > 0) {
       getWeather(searchHistory[searchHistory.length - 1]);
     }
+
   }
   
   initPage();
