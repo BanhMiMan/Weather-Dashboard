@@ -10,50 +10,51 @@
     <title>Weather Dashboard</title>
 </head>
 
+
+
 <body>
     <header class="container-fluid text-center text-white bg-dark p-2">
         <h1>Weather Dashboard</h1>
-    </header>
-
+    </header>            
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-3 bg-light">
                 <h5 class="mt-1">Search for a City:</h5>
                 <div class="input-group mb-3">
-                    <input id="enter-city" type="text" class="form-control" placeholder="Enter a city" aria-label="Enter a city">
+                    <input id="entercity" type="text" class="form-control" placeholder="Enter a city" aria-label="Enter a city">
                     <div class="input-group-append">
-                        <button class="btn btn-primary" type="button" id="search-button">
+                        <button class="btn btn-primary" type="button" id="searchbutton">
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
                 </div>
-                <button class="btn btn-primary mb-3" type="button" id="clear-history">Clear history</button>
+                <button class="btn btn-primary mb-3" type="button" id="clearhistory">Clear history</button>
                 <form id="history"></form>
             </div>
             <div class="col-lg-9">
                 <div class="row mr-0">
-                    <div class="col-lg-11 card m-3 d-none" id="today-weather">
+                    <div class="col-lg-11 card m-3 d-none" id="todaysweather">
                         <div class="card-body">
-                            <h3 id="city-name" class="city-name align-middle"></h3>
-                            <img id="current-pic" alt="">
+                            <h3 id="cityname" class="cityname align-middle"></h3>
+                            <img id="currentimg" alt="">
                             <p id="temperature"></p>
                             <p id="humidity"></p>
-                            <p id="wind-speed"></p>
-                            <p id="UV-index"></p>
+                            <p id="windspeed"></p>
+                            <p id="UVindex"></p>
                         </div>
                     </div>
                 </div>
-                <div class="row d-none" id="fiveday-header">
+                <div class="row d-none" id="fiveday">
                     <div class="col-12">
                         <h3>5-Day Forecast</h3>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-2 forecast bg-primary text-white m-2 rounded"></div>
-                    <div class="col-md-2 forecast bg-primary text-white m-2 rounded"></div>
-                    <div class="col-md-2 forecast bg-primary text-white m-2 rounded"></div>
-                    <div class="col-md-2 forecast bg-primary text-white m-2 rounded"></div>
-                    <div class="col-md-2 forecast bg-primary text-white m-2 rounded"></div>
+                <div class="row bg-primary text-white m-2 rounded">
+                    <div class="col-md-2 forecast"></div>
+                    <div class="col-md-2 forecast"></div>
+                    <div class="col-md-2 forecast"></div>
+                    <div class="col-md-2 forecast"></div>
+                    <div class="col-md-2 forecast"></div>
                 </div>
             </div>
         </div>
